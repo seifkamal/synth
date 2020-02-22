@@ -44,17 +44,17 @@ export const Synth = () => {
 
     return (
         <div className={classes.root}>
-            <Grid className={classes.synth} container spacing={2} alignItems="flex-start" justify="center">
+            <Grid className={classes.synth} container spacing={2} alignItems="center" justify="center">
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>My{titleAdjectiveString || titleDelimiter}Synth</Paper>
                 </Grid>
-                <Grid container item xs={3} direction="column">
+                <Grid container item xs={3} alignItems="center" justify="center">
                     <Grid item xs={12}>
                         <Oscillator synth={synth}/>
                     </Grid>
                 </Grid>
-                <Grid container item xs={3} direction="column">
-                    <Grid item xs={12}>
+                <Grid container item xs={3} alignItems="center" justify="center">
+                    <Grid item xs={6}>
                         <Toggle
                             text={effects.pitchShift.name}
                             action={(selected => {
@@ -63,14 +63,14 @@ export const Synth = () => {
                             })}
                         />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={6}>
                         <Parameter
                             action={value => effects.pitchShift.object.pitch = value}
                         />
                     </Grid>
                 </Grid>
-                <Grid container item xs={3} direction="column">
-                    <Grid item xs={12}>
+                <Grid container item xs={3} alignItems="center" justify="center">
+                    <Grid item xs={6}>
                         <Toggle
                             text={effects.filter.name}
                             action={(selected => {
@@ -79,7 +79,7 @@ export const Synth = () => {
                             })}
                         />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={6}>
                         <Parameter
                             min={-40}
                             max={50}
@@ -87,8 +87,8 @@ export const Synth = () => {
                         />
                     </Grid>
                 </Grid>
-                <Grid container item xs={3} direction="column">
-                    <Grid item xs={12}>
+                <Grid container item xs={3} alignItems="center" justify="center">
+                    <Grid item xs={6}>
                         <Toggle
                             text={effects.distortion.name}
                             action={(selected => {
@@ -97,7 +97,7 @@ export const Synth = () => {
                             })}
                         />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={6}>
                         <Parameter
                             initialValue={1}
                             max={10}
@@ -105,7 +105,7 @@ export const Synth = () => {
                         />
                     </Grid>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} alignItems="center" justify="center">
                     <Keyboard synth={synth}/>
                 </Grid>
             </Grid>
