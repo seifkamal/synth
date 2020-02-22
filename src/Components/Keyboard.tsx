@@ -23,12 +23,8 @@ export const Keyboard = (props: Props) => {
     return (
         <Piano.Piano
             noteRange={{first: firstNote, last: lastNote}}
-            playNote={(midiNumber: number) => {
-                props.synth.triggerAttack(calculateMidiNoteFrequency(midiNumber));
-            }}
-            stopNote={(midiNumber: number) => {
-                props.synth.triggerRelease();
-            }}
+            playNote={(midiNumber: number) => props.synth.triggerAttack(calculateMidiNoteFrequency(midiNumber))}
+            stopNote={(midiNumber: number) => props.synth.triggerRelease()}
             width={700}
             keyboardShortcuts={keyboardShortcuts}
         />
