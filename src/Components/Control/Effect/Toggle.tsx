@@ -11,18 +11,18 @@ export const Toggle = (props: Props) => {
     const [selected, setSelected] = React.useState(false);
 
     return (
-            <ToggleButton
-                size="small"
-                value="check"
-                selected={selected}
-                onChange={() => {
-                    const value = !selected;
+        <ToggleButton
+            size="small"
+            value="check"
+            selected={selected}
+            onChange={() => {
+                const value = !selected;
 
-                    setSelected(value);
-                    props.action(value);
-                }}
-            >
-                <Typography>{props.text}</Typography>
-            </ToggleButton>
+                setSelected(value);
+                props.action(value);
+            }}
+        >
+            <Typography>{props.text}</Typography>
+        </ToggleButton>
     );
 };
