@@ -34,17 +34,11 @@ const synth = new Tone.MonoSynth({oscillator: {type: defaultType}}).chain(...eff
 export const Synth = () => {
     const titleDelimiter = " ";
     const [titleAdjectiveString, setTitleAdjectiveString] = React.useState(titleDelimiter);
-    const [titleAdjectives, setTitleAdjectives]: [{ [effect: string]: string }, any] = React.useState({});
+    const [titleAdjectives]: [{ [effect: string]: string }, any] = React.useState({});
 
     const classes = useStyles();
     const updateAdjective = (adjective: string, active: boolean) => {
-        if (active) {
-            titleAdjectives[adjective] = adjective;
-        } else {
-            delete titleAdjectives[adjective];
-        }
-
-        setTitleAdjectives(titleAdjectives);
+        titleAdjectives[adjective] = active ? adjective : "";
         setTitleAdjectiveString(titleDelimiter + Object.values(titleAdjectives).join(titleDelimiter) + titleDelimiter);
     };
 
