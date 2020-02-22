@@ -14,18 +14,18 @@ distortion.wet.value = 0;
 
 export const effects = {
     pitchShift: {
-        name: 'Pitch',
+        name: 'Sass',
         object: pitchShift,
-        adjective: 'Mad'
+        adjective: 'Bad'
     },
     filter: {
-        name: 'Filter',
+        name: 'Wob',
         object: filter,
         adjective: 'Rad'
     },
     distortion: {
-        name: '@!%£@',
+        name: '$*¡%',
         object: distortion,
-        adjective: 'Bad'
+        adjective: 'Mad'
     }
 };
