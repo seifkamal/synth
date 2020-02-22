@@ -1,11 +1,10 @@
 import React from 'react';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import Typography from '@material-ui/core/Typography';
-import Tone from "tone";
 
 interface Props {
     text: string
-    effect: Tone.Effect
+    action: (selected: boolean) => void
 }
 
 export const Toggle = (props: Props) => {
@@ -20,7 +19,7 @@ export const Toggle = (props: Props) => {
                     const value = !selected;
 
                     setSelected(value);
-                    props.effect.wet.value = Number(value);
+                    props.action(value);
                 }}
             >
                 <Typography>{props.text}</Typography>

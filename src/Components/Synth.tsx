@@ -28,17 +28,31 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-const effectsChain = Object.entries(effects).map(([name, effect]) => effect);
+const effectsChain = Object.entries(effects).map(([name, effect]) => effect.object);
 const synth = new Tone.MonoSynth({oscillator: {type: defaultType}}).chain(...effectsChain, Tone.Master);
 
 export const Synth = () => {
+    const titleDelimiter = " ";
+    const [titleAdjectiveString, setTitleAdjectiveString] = React.useState(titleDelimiter);
+    const [titleAdjectives, setTitleAdjectives]: [{ [effect: string]: string }, any] = React.useState({});
+
     const classes = useStyles();
+    const updateAdjective = (adjective: string, active: boolean) => {
+        if (active) {
+            titleAdjectives[adjective] = adjective;
+        } else {
+            delete titleAdjectives[adjective];
+        }
+
+        setTitleAdjectives(titleAdjectives);
+        setTitleAdjectiveString(titleDelimiter + Object.values(titleAdjectives).join(titleDelimiter) + titleDelimiter);
+    };
 
     return (
         <div className={classes.root}>
             <Grid className={classes.synth} container spacing={2} alignItems="flex-start" justify="center">
                 <Grid item xs={12}>
-                    <Paper className={classes.paper}>A Synth</Paper>
+                    <Paper className={classes.paper}>My{titleAdjectiveString || titleDelimiter}Synth</Paper>
                 </Grid>
                 <Grid container item xs={3} direction="column">
                     <Grid item xs={12}>
@@ -48,43 +62,52 @@ export const Synth = () => {
                 <Grid container item xs={3} direction="column">
                     <Grid item xs={12}>
                         <Toggle
-                            text="Pitch"
-                            effect={effects.pitchShift}
+                            text={effects.pitchShift.name}
+                            action={(selected => {
+                                effects.pitchShift.object.wet.value = Number(selected);
+                                updateAdjective(effects.pitchShift.adjective, selected);
+                            })}
                         />
                     </Grid>
                     <Grid item xs={12}>
                         <Parameter
-                            action={(value: number) => effects.pitchShift.pitch = value}
+                            action={value => effects.pitchShift.object.pitch = value}
                         />
                     </Grid>
                 </Grid>
                 <Grid container item xs={3} direction="column">
                     <Grid item xs={12}>
                         <Toggle
-                            text="Filter"
-                            effect={effects.filter}
+                            text={effects.filter.name}
+                            action={(selected => {
+                                effects.filter.object.wet.value = Number(selected);
+                                updateAdjective(effects.filter.adjective, selected);
+                            })}
                         />
                     </Grid>
                     <Grid item xs={12}>
                         <Parameter
                             min={-40}
                             max={50}
-                            action={(value: number) => effects.filter.sensitivity = value}
+                            action={value => effects.filter.object.sensitivity = value}
                         />
                     </Grid>
                 </Grid>
                 <Grid container item xs={3} direction="column">
                     <Grid item xs={12}>
                         <Toggle
-                            text="@!%£@"
-                            effect={effects.distortion}
+                            text={effects.distortion.name}
+                            action={(selected => {
+                                effects.distortion.object.wet.value = Number(selected);
+                                updateAdjective(effects.distortion.adjective, selected);
+                            })}
                         />
                     </Grid>
                     <Grid item xs={12}>
                         <Parameter
                             initialValue={1}
                             max={10}
-                            action={(value: number) => effects.distortion.distortion = value}
+                            action={value => effects.distortion.object.distortion = value}
                         />
                     </Grid>
                 </Grid>
