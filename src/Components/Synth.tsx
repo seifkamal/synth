@@ -81,7 +81,6 @@ export const Synth = () => {
                     </Grid>
                     <Grid item xs={6}>
                         <Parameter
-                            min={-40}
                             max={50}
                             action={value => effects.filter.object.sensitivity = value}
                         />
