@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: 'IBM Plex Mono';
+    font-family: 'IBM Plex Mono', monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
