@@ -1,7 +1,10 @@
 import React from "react";
+import Tone from "tone";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
-import Tone from "tone";
+import SquareFootIcon from '@material-ui/icons/SquareFoot';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 
 export const defaultType = 'sawtooth';
 
@@ -21,9 +24,15 @@ export const Oscillator = (props: Props) => {
                 props.synth.oscillator.type = value;
             }}
         >
-            <ToggleButton value={defaultType}/>
-            <ToggleButton value="square"/>
-            <ToggleButton value="sine8"/>
+            <ToggleButton value={defaultType}>
+                <SquareFootIcon fontSize="small"/>
+            </ToggleButton>
+            <ToggleButton value="square">
+                <CheckBoxOutlineBlankIcon fontSize="small"/>
+            </ToggleButton>
+            <ToggleButton value="sine8">
+                <RadioButtonUncheckedIcon fontSize="small"/>
+            </ToggleButton>
         </ToggleButtonGroup>
     );
 };
