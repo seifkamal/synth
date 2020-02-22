@@ -1,7 +1,8 @@
 {
   "name": "synth",
   "version": "1.0.0",
-  "private": true,
+  "description": "A basic monophonic synthesiser web app",
+  "license": "MIT",
   "homepage": "https://safe-k.github.io/synth",
   "dependencies": {
     "@material-ui/core": "^4.9.3",
@@ -23,7 +24,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
