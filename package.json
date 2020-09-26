@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A basic monophonic synthesiser web app",
   "license": "MIT",
-  "homepage": "https://safe-k.github.io/synth",
+  "homepage": "https://seifkamal.github.io/synth",
   "dependencies": {
     "@material-ui/core": "^4.9.3",
     "@material-ui/icons": "^4.9.1",
